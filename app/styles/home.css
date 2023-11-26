@@ -1,17 +1,9 @@
 
 body {
     font-family: Arial, sans-serif;
-    padding: 20px;
     background: #f7f7f7;
     margin: 0;
 }
-
-
-
-
-
-
-
 
 .add-to-cart-button:hover {
     background: #CC3A20;

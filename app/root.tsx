@@ -8,6 +8,7 @@ import {
 } from "@remix-run/react";
 import {LinksFunction} from "@remix-run/node";
 import { cssBundleHref } from "@remix-run/css-bundle";
+import TopBar from "~/components/TopBar/TopBar";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref
@@ -26,6 +27,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <TopBar/>
         <Outlet/>
         <ScrollRestoration />
         <Scripts />
