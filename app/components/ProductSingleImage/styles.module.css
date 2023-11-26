@@ -1,0 +1,20 @@
+.root {
+    width: 100%;
+    max-width: 300px; /* You can adjust this as needed */
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.root img {
+    width: 100%;
+    height: auto;
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
