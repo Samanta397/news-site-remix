@@ -1,24 +1,27 @@
 import React from 'react';
 import CartIcon from "~/components/TopBar/CartButton/CartIcon/CartIcon";
 import styles from './styles.module.css'
+import {Link, useRouteLoaderData} from "@remix-run/react";
+import type {loader} from "~/root";
+import invariant from "tiny-invariant";
 
-type CartButtonProps = {
-    count?: number
-}
+const CartButton = () => {
+  const data = useRouteLoaderData<typeof loader>("root");
 
-const CartButton = ({count}: CartButtonProps) => {
+  invariant(data, 'data is required')
+
+  const quantity = data.cart.reduce((acc, item) => acc + item.quantity, 0)
     return (
-        <>
+        <Link to={'/cart'}>
             <button className={styles.root}>
                 <CartIcon/>
             </button>
-            {count && (
+            {quantity && (
                 <span className={styles.badge}>
-                    {count}
+                    {quantity}
                 </span>
             )}
-
-        </>
+        </Link>
     );
 };
 

@@ -1,14 +1,15 @@
 import {
-  Form,
   Links,
   LiveReload,
   Meta, Outlet,
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import {LinksFunction} from "@remix-run/node";
+import {json, LinksFunction, LoaderFunctionArgs} from "@remix-run/node";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import TopBar from "~/components/TopBar/TopBar";
+import {getSession} from "~/services/sessions.server";
+import {createCart} from "~/services/cart.server";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref
@@ -17,7 +18,16 @@ export const links: LinksFunction = () => [
 ];
 
 
+export const loader = async ({request}: LoaderFunctionArgs) => {
+  const session = await getSession(request.headers.get('Cookie'))
+  const cart = createCart(session)
+
+  return json({cart: cart.items()});
+}
+
+
 export default function App() {
+
   return (
     <html lang="en">
       <head>

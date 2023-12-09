@@ -1,6 +1,7 @@
 import {Product} from "~/services/products.server";
 import {Link} from "@remix-run/react";
 import styles from './styles.module.css'
+import {AddToCart} from "~/components/ProductList/AddToCart/AddToCart";
 
 const ProductListItem: React.FC<{product: Product}> = ({product}) => {
   return (
@@ -10,7 +11,7 @@ const ProductListItem: React.FC<{product: Product}> = ({product}) => {
           <h2 className={styles.name}><Link to={`/products/${product.id}`}>{product.title}</Link></h2>
           <p className={styles.description}>{product.description}</p>
           <p className={styles.price}>{product.price}</p>
-          <button className={styles.addToCart}>Add to Cart</button>
+          <AddToCart/>
         </div>
     </div>
   )
